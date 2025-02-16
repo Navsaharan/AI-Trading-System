@@ -1,0 +1,162 @@
+/* Theme Transition Styles */
+.theme-transition,
+.theme-transition *,
+.theme-transition *:before,
+.theme-transition *:after {
+    transition: all 0.3s ease !important;
+    transition-delay: 0 !important;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background: var(--primary-color);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+.theme-toggle-icon {
+    width: 24px;
+    height: 24px;
+    position: relative;
+}
+
+.sun-icon,
+.moon-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease, opacity 0.3s ease;
+}
+
+.sun-icon {
+    fill: #ffffff;
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+.moon-icon {
+    fill: #ffffff;
+    opacity: 0;
+    transform: rotate(90deg);
+}
+
+.dark-mode .sun-icon {
+    opacity: 0;
+    transform: rotate(-90deg);
+}
+
+.dark-mode .moon-icon {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+/* Chart Theme Transitions */
+.trading-chart {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.chart-container svg {
+    transition: background-color 0.3s ease;
+}
+
+.chart-container text {
+    transition: fill 0.3s ease;
+}
+
+.chart-container line {
+    transition: stroke 0.3s ease;
+}
+
+/* Trading View Chart Theme */
+.tradingview-chart {
+    transition: none !important;
+}
+
+/* D3 Chart Theme */
+.d3-chart {
+    transition: background-color 0.3s ease;
+}
+
+.d3-chart .axis text {
+    transition: fill 0.3s ease;
+}
+
+.d3-chart .grid line {
+    transition: stroke 0.3s ease;
+}
+
+.d3-chart .line {
+    transition: stroke 0.3s ease;
+}
+
+/* Recharts Theme */
+.recharts-wrapper {
+    transition: background-color 0.3s ease;
+}
+
+.recharts-text {
+    transition: fill 0.3s ease;
+}
+
+.recharts-cartesian-grid line {
+    transition: stroke 0.3s ease;
+}
+
+.recharts-tooltip-wrapper {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* UI Elements Theme */
+.card,
+.button,
+.input,
+.select,
+.dropdown {
+    transition: background-color 0.3s ease, 
+                border-color 0.3s ease, 
+                color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+/* Table Theme */
+table {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+th, td {
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Form Elements Theme */
+input, select, textarea {
+    transition: background-color 0.3s ease,
+                border-color 0.3s ease,
+                color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+/* Notification Theme */
+.notification {
+    transition: background-color 0.3s ease,
+                border-color 0.3s ease,
+                color 0.3s ease,
+                transform 0.3s ease,
+                opacity 0.3s ease;

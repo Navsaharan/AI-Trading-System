@@ -1,0 +1,258 @@
+:root {
+    /* Light Theme Variables */
+    --light-bg: #ffffff;
+    --light-text: #1a1a1a;
+    --light-primary: #2196f3;
+    --light-secondary: #757575;
+    --light-accent: #4caf50;
+    --light-error: #f44336;
+    --light-success: #4caf50;
+    --light-warning: #ff9800;
+    --light-surface: #f5f5f5;
+    --light-border: #e0e0e0;
+    --light-hover: #f0f0f0;
+    --light-chart-up: #26a69a;
+    --light-chart-down: #ef5350;
+    
+    /* Dark Theme Variables */
+    --dark-bg: #1a1a1a;
+    --dark-text: #ffffff;
+    --dark-primary: #2196f3;
+    --dark-secondary: #9e9e9e;
+    --dark-accent: #4caf50;
+    --dark-error: #f44336;
+    --dark-success: #4caf50;
+    --dark-warning: #ff9800;
+    --dark-surface: #2d2d2d;
+    --dark-border: #404040;
+    --dark-hover: #333333;
+    --dark-chart-up: #26a69a;
+    --dark-chart-down: #ef5350;
+    
+    /* Chart Colors */
+    --chart-grid: #404040;
+    --chart-text: #9e9e9e;
+    --chart-volume: #757575;
+}
+
+/* Base Styles */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Light Theme (Default) */
+body {
+    background-color: var(--light-bg);
+    color: var(--light-text);
+}
+
+/* Dark Theme */
+body.dark-mode {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+/* Trading Charts - Light Theme */
+.trading-chart {
+    background-color: var(--light-surface);
+    border: 1px solid var(--light-border);
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.trading-chart .chart-title {
+    color: var(--light-text);
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* Trading Charts - Dark Theme */
+.dark-mode .trading-chart {
+    background-color: var(--dark-surface);
+    border-color: var(--dark-border);
+}
+
+.dark-mode .trading-chart .chart-title {
+    color: var(--dark-text);
+}
+
+/* TradingView Chart Customization */
+.trading-view-chart {
+    --tv-color-platform-background: var(--dark-surface);
+    --tv-color-pane-background: var(--dark-surface);
+    --tv-color-toolbar-button-background-hover: var(--dark-hover);
+    --tv-color-toolbar-button-background-secondary-hover: var(--dark-hover);
+    --tv-color-toolbar-button-background-expanded: var(--dark-hover);
+    --tv-color-toolbar-button-text: var(--dark-text);
+    --tv-color-toolbar-button-text-hover: var(--dark-text);
+}
+
+/* Account Switcher */
+.account-switcher {
+    position: relative;
+    padding: 10px;
+    background: var(--light-surface);
+    border-radius: 8px;
+    margin: 10px;
+    transition: all 0.3s ease;
+}
+
+.dark-mode .account-switcher {
+    background: var(--dark-surface);
+}
+
+.account-switcher-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.account-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: inherit;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.account-item {
+    padding: 12px 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.2s ease;
+}
+
+.account-item:hover {
+    background: var(--light-hover);
+}
+
+.dark-mode .account-item:hover {
+    background: var(--dark-hover);
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--light-primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.dark-mode .theme-toggle {
+    background: var(--dark-primary);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Smooth Transitions */
+.chart-container,
+.table-container,
+.card,
+.button,
+.input,
+.dropdown {
+    transition: all 0.3s ease;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    background: var(--light-surface);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.dark-mode table {
+    background: var(--dark-surface);
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--light-border);
+}
+
+.dark-mode th,
+.dark-mode td {
+    border-bottom-color: var(--dark-border);
+}
+
+/* Cards */
+.card {
+    background: var(--light-surface);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dark-mode .card {
+    background: var(--dark-surface);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Buttons */
+.button {
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.button-primary {
+    background: var(--light-primary);
+    color: white;
+}
+
+.dark-mode .button-primary {
+    background: var(--dark-primary);
+}
+
+/* Inputs */
+input, select, textarea {
+    padding: 10px;
+    border: 1px solid var(--light-border);
+    border-radius: 6px;
+    background: var(--light-bg);
+    color: var(--light-text);
+    transition: all 0.3s ease;
+}
+
+.dark-mode input,
+.dark-mode select,
+.dark-mode textarea {
+    border-color: var(--dark-border);
+    background: var(--dark-surface);
+    color: var(--dark-text);
+}

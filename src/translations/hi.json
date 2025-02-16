@@ -1,0 +1,75 @@
+{
+    "common": {
+        "dashboard": "डैशबोर्ड",
+        "portfolio": "पोर्टफोलियो",
+        "orders": "ऑर्डर",
+        "watchlist": "वॉचलिस्ट",
+        "reports": "रिपोर्ट्स",
+        "settings": "सेटिंग्स",
+        "logout": "लॉग आउट",
+        "save": "सेव करें",
+        "cancel": "रद्द करें",
+        "update": "अपडेट करें",
+        "delete": "डिलीट करें"
+    },
+    "trading": {
+        "buy": "खरीदें",
+        "sell": "बेचें",
+        "price": "कीमत",
+        "quantity": "मात्रा",
+        "total": "कुल",
+        "profit": "लाभ",
+        "loss": "हानि",
+        "market": "मार्केट",
+        "limit": "लिमिट",
+        "stop_loss": "स्टॉप लॉस",
+        "target": "टारगेट"
+    },
+    "portfolio": {
+        "holdings": "होल्डिंग्स",
+        "positions": "पोजीशन्स",
+        "invested": "निवेश की गई राशि",
+        "current_value": "वर्तमान मूल्य",
+        "day_gain": "दिन का लाभ",
+        "total_gain": "कुल लाभ"
+    },
+    "charges": {
+        "brokerage": "ब्रोकरेज",
+        "stt": "एसटीटी",
+        "gst": "जीएसटी",
+        "stamp_duty": "स्टांप ड्यूटी",
+        "exchange_charges": "एक्सचेंज चार्ज",
+        "total_charges": "कुल चार्ज"
+    },
+    "admin": {
+        "users": "उपयोगकर्ता",
+        "trading_rules": "ट्रेडिंग नियम",
+        "charge_settings": "चार्ज सेटिंग्स",
+        "system_settings": "सिस्टम सेटिंग्स",
+        "api_settings": "एपीआई सेटिंग्स"
+    },
+    "alerts": {
+        "success": "सफल",
+        "error": "त्रुटि",
+        "warning": "चेतावनी",
+        "order_placed": "ऑर्डर प्लेस हो गया है",
+        "order_failed": "ऑर्डर विफल हो गया",
+        "login_success": "लॉगिन सफल",
+        "login_failed": "लॉगिन विफल"
+    },
+    "analysis": {
+        "technical": "तकनीकी विश्लेषण",
+        "fundamental": "फंडामेंटल विश्लेषण",
+        "market_depth": "मार्केट डेप्थ",
+        "volume": "वॉल्यूम",
+        "indicators": "इंडिकेटर्स"
+    },
+    "reports": {
+        "daily": "दैनिक रिपोर्ट",
+        "weekly": "साप्ताहिक रिपोर्ट",
+        "monthly": "मासिक रिपोर्ट",
+        "yearly": "वार्षिक रिपोर्ट",
+        "tax_report": "टैक्स रिपोर्ट",
+        "pl_report": "पी एंड एल रिपोर्ट"
+    }
+}

@@ -1,0 +1,362 @@
+/* FamilyHVSDN Trading Platform Styles */
+
+:root {
+    /* Light Theme */
+    --light-bg: #ffffff;
+    --light-text: #333333;
+    --light-accent: #f5f5f5;
+    --light-border: #e0e0e0;
+    --light-card: #ffffff;
+    --light-hover: #f0f0f0;
+    
+    /* Dark Theme */
+    --dark-bg: #1a1a1a;
+    --dark-text: #ffffff;
+    --dark-accent: #2d2d2d;
+    --dark-border: #404040;
+    --dark-card: #2d2d2d;
+    --dark-hover: #363636;
+    
+    /* Common Colors */
+    --primary: #2196f3;
+    --success: #4caf50;
+    --warning: #ff9800;
+    --danger: #f44336;
+    --info: #2196f3;
+}
+
+/* Theme Specific Styles */
+body {
+    background-color: var(--light-bg);
+    color: var(--light-text);
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+/* Panel Styles */
+.panel {
+    background: var(--light-card);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dark-mode .panel {
+    background: var(--dark-card);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Chart Styles */
+.chart-container {
+    background: var(--light-card);
+    border: 1px solid var(--primary);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dark-mode .chart-container {
+    background: var(--dark-card);
+    border: 1px solid var(--primary);
+}
+
+/* Metric Box Styles */
+.metric-box {
+    background: var(--light-card);
+    border-left: 4px solid var(--primary);
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dark-mode .metric-box {
+    background: var(--dark-card);
+    border-left: 4px solid var(--primary);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.metric-box h4 {
+    color: var(--primary);
+    margin: 0 0 10px 0;
+}
+
+.dark-mode .metric-box h4 {
+    color: var(--primary);
+}
+
+.metric-box p {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+/* Signal Box Styles */
+.signal-box {
+    background: var(--light-card);
+    border: 1px solid var(--primary);
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dark-mode .signal-box {
+    background: var(--dark-card);
+    border: 1px solid var(--primary);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.signal-box.buy {
+    border-left: 4px solid var(--success);
+}
+
+.signal-box.sell {
+    border-left: 4px solid var(--danger);
+}
+
+/* Button Styles */
+.button {
+    background-color: var(--primary);
+    color: var(--light-text);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.dark-mode .button {
+    color: var(--dark-text);
+}
+
+.button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* Tab Styles */
+.tabs {
+    border-bottom: 2px solid var(--primary);
+    margin-bottom: 20px;
+}
+
+.tab {
+    background: none;
+    border: none;
+    color: var(--light-text);
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+.dark-mode .tab {
+    color: var(--dark-text);
+}
+
+.tab.active {
+    color: var(--primary);
+    border-bottom: 3px solid var(--primary);
+}
+
+/* Alert Styles */
+.alert {
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    background: var(--light-card);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dark-mode .alert {
+    background: var(--dark-card);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.alert.success {
+    background-color: rgba(76, 175, 80, 0.1);
+    border-left: 4px solid var(--success);
+}
+
+.alert.warning {
+    background-color: rgba(255, 215, 0, 0.1);
+    border-left: 4px solid var(--warning);
+}
+
+.alert.danger {
+    background-color: rgba(244, 67, 54, 0.1);
+    border-left: 4px solid var(--danger);
+}
+
+/* Grid Layout */
+.main-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.bottom-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .main-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content,
+    .bottom-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Loading Animation */
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.loading::after {
+    content: "";
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--primary);
+    border-top: 4px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light-bg);
+}
+
+.dark-mode ::-webkit-scrollbar-track {
+    background: var(--dark-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--success);
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.theme-toggle button {
+    background: var(--light-accent);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.dark-mode .theme-toggle button {
+    background: var(--dark-accent);
+    color: var(--dark-text);
+}
+
+/* Charges Breakdown Styles */
+.charges-breakdown {
+    margin-top: 10px;
+    font-size: 0.9em;
+}
+
+.charges-toggle {
+    color: var(--primary);
+    cursor: pointer;
+    padding: 5px 0;
+    user-select: none;
+}
+
+.charges-toggle:hover {
+    opacity: 0.8;
+}
+
+.charges-details {
+    background: var(--light-accent);
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 5px;
+    transition: all 0.3s ease;
+}
+
+.dark-mode .charges-details {
+    background: var(--dark-accent);
+}
+
+.charges-details.hidden {
+    display: none;
+}
+
+.charge-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 1px solid var(--light-border);
+}
+
+.dark-mode .charge-item {
+    border-bottom: 1px solid var(--dark-border);
+}
+
+.charge-item:last-child {
+    border-bottom: none;
+}
+
+.charge-item.total {
+    margin-top: 5px;
+    padding-top: 8px;
+    border-top: 2px solid var(--light-border);
+    font-weight: bold;
+}
+
+.dark-mode .charge-item.total {
+    border-top: 2px solid var(--dark-border);
+}
+
+.charge-value {
+    font-family: monospace;
+}

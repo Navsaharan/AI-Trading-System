@@ -1,0 +1,264 @@
+.editor-container {
+    display: flex;
+    height: 100vh;
+    background: #1e1e1e;
+    color: #d4d4d4;
+}
+
+/* File Browser */
+.file-browser {
+    width: 250px;
+    border-right: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+}
+
+.file-search {
+    padding: 10px;
+    border-bottom: 1px solid #333;
+}
+
+.file-search input {
+    width: 100%;
+    padding: 8px;
+    background: #2d2d2d;
+    border: 1px solid #404040;
+    color: #d4d4d4;
+    border-radius: 4px;
+}
+
+.file-tree {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.file-item, .folder-header {
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.file-item:hover, .folder-header:hover {
+    background: #2a2d2e;
+}
+
+.folder-content {
+    margin-left: 20px;
+}
+
+.file-icon, .folder-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    background-size: contain;
+}
+
+/* Editor Area */
+.editor-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.editor-header {
+    padding: 10px;
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.current-file {
+    color: #d4d4d4;
+    font-size: 14px;
+}
+
+.editor-actions {
+    display: flex;
+    gap: 10px;
+}
+
+#monaco-editor {
+    flex: 1;
+}
+
+/* Preview Panel */
+.preview-panel, .history-panel {
+    width: 400px;
+    border-left: 1px solid #333;
+    display: none;
+    flex-direction: column;
+}
+
+.preview-header, .history-header {
+    padding: 10px;
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.diff-view {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    font-family: monospace;
+}
+
+.diff-line {
+    padding: 2px 4px;
+    white-space: pre;
+}
+
+.addition {
+    background: #1e3a1e;
+    color: #7cc07c;
+}
+
+.deletion {
+    background: #3a1e1e;
+    color: #c07c7c;
+}
+
+.context {
+    color: #808080;
+}
+
+/* Syntax Check */
+.syntax-check {
+    padding: 10px;
+    border-top: 1px solid #333;
+}
+
+.syntax-valid {
+    color: #7cc07c;
+}
+
+.syntax-invalid {
+    color: #c07c7c;
+}
+
+.error-header {
+    margin-bottom: 8px;
+}
+
+.error-item {
+    margin-left: 20px;
+    margin-bottom: 4px;
+}
+
+/* Version History */
+.history-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.version-item {
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.version-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.commit-hash {
+    color: #7cc07c;
+    font-family: monospace;
+}
+
+.commit-date {
+    color: #808080;
+}
+
+.commit-message {
+    margin-bottom: 8px;
+}
+
+.commit-author {
+    color: #808080;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+/* Commit Dialog */
+.commit-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog-content {
+    background: #2d2d2d;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+}
+
+#commit-message {
+    width: 100%;
+    height: 100px;
+    margin: 10px 0;
+    padding: 8px;
+    background: #1e1e1e;
+    border: 1px solid #404040;
+    color: #d4d4d4;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* Buttons */
+.btn {
+    padding: 8px 16px;
+    border: 1px solid #404040;
+    background: #2d2d2d;
+    color: #d4d4d4;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #3d3d3d;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn.primary {
+    background: #0e639c;
+    border-color: #0e639c;
+}
+
+.btn.primary:hover {
+    background: #1177bb;
+}
+
+/* File Icons */
+.python-icon { background-image: url('/static/admin/icons/python.svg'); }
+.javascript-icon { background-image: url('/static/admin/icons/javascript.svg'); }
+.html-icon { background-image: url('/static/admin/icons/html.svg'); }
+.css-icon { background-image: url('/static/admin/icons/css.svg'); }
+.json-icon { background-image: url('/static/admin/icons/json.svg'); }
+.folder-icon { background-image: url('/static/admin/icons/folder.svg'); }

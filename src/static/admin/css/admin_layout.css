@@ -1,0 +1,173 @@
+/* Admin Layout Styles */
+.admin-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background: #1a1a1a;
+    color: #fff;
+    padding: 1rem;
+    transition: width 0.3s;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.sidebar-item:hover {
+    background: #2c2c2c;
+}
+
+.sidebar-item.active {
+    background: #007bff;
+}
+
+.sidebar-item i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+.item-controls {
+    margin-left: auto;
+    display: none;
+}
+
+.sidebar-item:hover .item-controls {
+    display: flex;
+}
+
+.item-controls button {
+    background: none;
+    border: none;
+    color: #fff;
+    padding: 2px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+/* Main Content Styles */
+.main-content {
+    flex: 1;
+    padding: 1rem;
+    background: #f4f4f4;
+    overflow-y: auto;
+}
+
+/* Page Section Styles */
+.page-section {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.page-controls button {
+    margin-left: 0.5rem;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Dragging Styles */
+.sidebar-item.dragging {
+    opacity: 0.5;
+    background: #2c2c2c;
+}
+
+.drag-over {
+    border: 2px dashed #007bff;
+}
+
+/* Button Styles */
+.btn-primary {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .admin-container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: auto;
+    }
+    
+    .item-controls {
+        display: flex;
+    }
+}

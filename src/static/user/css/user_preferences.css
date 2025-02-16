@@ -1,0 +1,230 @@
+/* User Preferences Styles */
+.preferences-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #fff;
+    border-radius: 8px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 1rem;
+}
+
+.tab-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.tab-btn.active {
+    opacity: 1;
+    border-bottom: 2px solid #007bff;
+}
+
+.tab-content {
+    display: none;
+    padding: 1rem 0;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Preference Items */
+.preference-item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    background: #f8f9fa;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+    cursor: move;
+}
+
+.preference-item i {
+    margin-right: 1rem;
+    color: #6c757d;
+}
+
+.preference-item span {
+    flex: 1;
+}
+
+/* Switch Toggle */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #007bff;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Form Groups */
+.preference-group {
+    margin-bottom: 1rem;
+}
+
+.preference-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.preference-group select,
+.preference-group input[type="number"],
+.preference-group input[type="text"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Widget Config */
+.widget-config {
+    background: #f8f9fa;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+.widget-config h4 {
+    margin: 0 0 0.5rem 0;
+}
+
+.widget-config select {
+    margin-left: 1rem;
+}
+
+/* Dragging Styles */
+.preference-item.dragging {
+    opacity: 0.5;
+    background: #e9ecef;
+}
+
+/* Modal Footer */
+.modal-footer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.modal-footer button {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.save-btn {
+    background: #007bff;
+    color: #fff;
+    border: none;
+}
+
+.cancel-btn {
+    background: #6c757d;
+    color: #fff;
+    border: none;
+}
+
+.reset-btn {
+    background: none;
+    border: 1px solid #dc3545;
+    color: #dc3545;
+}
+
+/* Customize Button */
+#customize-layout-btn {
+    background: none;
+    border: 1px solid #007bff;
+    color: #007bff;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#customize-layout-btn:hover {
+    background: #007bff;
+    color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        padding: 1rem;
+    }
+    
+    .tabs {
+        flex-wrap: wrap;
+    }
+    
+    .tab-btn {
+        flex: 1;
+        min-width: 100px;
+    }
+}
