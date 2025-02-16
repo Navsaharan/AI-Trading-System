@@ -1,0 +1,117 @@
+{
+    "market_predictor": {
+        "model_config": {
+            "input_size": 10,
+            "hidden_size": 128,
+            "num_layers": 3,
+            "dropout": 0.2
+        },
+        "training_config": {
+            "batch_size": 32,
+            "learning_rate": 0.001,
+            "epochs": 10,
+            "train_interval_hours": 1,
+            "early_stopping_patience": 5,
+            "validation_split": 0.2
+        },
+        "data_config": {
+            "sequence_length": 60,
+            "prediction_horizon": 5,
+            "features": [
+                "open",
+                "high",
+                "low",
+                "close",
+                "volume",
+                "rsi",
+                "macd",
+                "bbands",
+                "atr",
+                "obv"
+            ]
+        }
+    },
+    "sentiment_analyzer": {
+        "model_config": {
+            "model_name": "ProsusAI/finbert",
+            "num_labels": 3,
+            "hidden_dropout_prob": 0.1
+        },
+        "training_config": {
+            "batch_size": 64,
+            "learning_rate": 0.0001,
+            "epochs": 5,
+            "train_interval_hours": 24,
+            "warmup_steps": 1000,
+            "gradient_accumulation_steps": 2
+        },
+        "data_config": {
+            "max_length": 512,
+            "balance_dataset": true,
+            "min_samples_per_class": 1000
+        }
+    },
+    "portfolio_optimizer": {
+        "model_config": {
+            "risk_free_rate": 0.02,
+            "confidence_level": 0.95,
+            "optimization_method": "SLSQP"
+        },
+        "training_config": {
+            "train_interval_hours": 168,
+            "lookback_days": 30,
+            "rebalance_threshold": 0.1
+        },
+        "constraints": {
+            "max_position_size": 0.2,
+            "min_position_size": 0.01,
+            "max_sector_exposure": 0.3,
+            "min_assets": 5
+        }
+    },
+    "risk_analyzer": {
+        "model_config": {
+            "var_confidence": 0.99,
+            "stress_test_scenarios": 1000,
+            "risk_metrics": [
+                "var",
+                "cvar",
+                "sharpe",
+                "sortino",
+                "max_drawdown"
+            ]
+        },
+        "training_config": {
+            "train_interval_hours": 24,
+            "lookback_days": 60,
+            "update_threshold": 0.05
+        },
+        "limits": {
+            "max_var": 0.02,
+            "max_leverage": 2.0,
+            "min_liquidity": 1000000
+        }
+    },
+    "system": {
+        "gpu_config": {
+            "use_gpu": true,
+            "precision": "mixed",
+            "memory_limit": 0.9
+        },
+        "logging": {
+            "level": "INFO",
+            "save_interval_hours": 1,
+            "max_log_files": 30
+        },
+        "data_collection": {
+            "market_data_interval_minutes": 1,
+            "news_data_interval_minutes": 15,
+            "economic_data_interval_hours": 24
+        },
+        "database": {
+            "cleanup_interval_days": 30,
+            "max_training_data_age_days": 90,
+            "backup_interval_hours": 24
+        }
+    }
+}

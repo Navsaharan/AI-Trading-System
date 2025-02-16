@@ -1,0 +1,108 @@
+{
+    "cloud_providers": {
+        "oracle": {
+            "instances": [
+                {
+                    "name": "oracle-compute-1",
+                    "type": "VM.Standard.A1.Flex",
+                    "ocpus": 4,
+                    "memory_in_gbs": 24,
+                    "role": ["data_collection", "database"],
+                    "region": "ap-mumbai-1"
+                },
+                {
+                    "name": "oracle-compute-2",
+                    "type": "VM.Standard.E2.1.Micro",
+                    "ocpus": 1,
+                    "memory_in_gbs": 1,
+                    "role": ["api_gateway", "load_balancer"],
+                    "region": "ap-singapore-1"
+                }
+            ],
+            "storage": {
+                "block_volume": {
+                    "size_in_gbs": 100,
+                    "backup_policy": "bronze"
+                }
+            }
+        },
+        "google_cloud": {
+            "instances": [
+                {
+                    "name": "gcp-compute-1",
+                    "type": "e2-micro",
+                    "memory": "1GB",
+                    "role": ["frontend", "cache"],
+                    "region": "asia-south1"
+                },
+                {
+                    "name": "gcp-compute-2",
+                    "type": "e2-small",
+                    "memory": "2GB",
+                    "role": ["model_inference"],
+                    "region": "asia-southeast1"
+                }
+            ],
+            "storage": {
+                "bucket": "trading-system-data",
+                "lifecycle_rules": {
+                    "cold_storage_after_days": 30,
+                    "delete_after_days": 90
+                }
+            }
+        }
+    },
+    "distributed_setup": {
+        "data_sharding": {
+            "market_data": {
+                "shard_by": "symbol",
+                "num_shards": 3,
+                "replication_factor": 2
+            },
+            "training_data": {
+                "shard_by": "date",
+                "num_shards": 2,
+                "replication_factor": 2
+            }
+        },
+        "model_distribution": {
+            "market_predictor": ["oracle-compute-1", "gcp-compute-2"],
+            "sentiment_analyzer": ["gcp-compute-2"],
+            "portfolio_optimizer": ["oracle-compute-1"],
+            "risk_analyzer": ["gcp-compute-2"]
+        },
+        "load_balancing": {
+            "algorithm": "least_connections",
+            "health_check_interval": 30,
+            "failover_threshold": 2
+        }
+    },
+    "optimization": {
+        "data_collection": {
+            "websocket_connections": true,
+            "batch_size": 1000,
+            "compression": "snappy",
+            "buffer_size": "100MB"
+        },
+        "model_optimization": {
+            "quantization": true,
+            "pruning": true,
+            "knowledge_distillation": true,
+            "batch_inference": true
+        },
+        "caching": {
+            "redis_cache_size": "500MB",
+            "market_data_ttl": 3600,
+            "model_predictions_ttl": 300
+        }
+    },
+    "fallback_strategy": {
+        "priority_order": [
+            "oracle-compute-1",
+            "gcp-compute-2",
+            "oracle-compute-2",
+            "gcp-compute-1"
+        ],
+        "failover_timeout": 10
+    }
+}
