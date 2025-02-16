@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Trading System - Dashboard</title>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/theme.css">
+    <link rel="stylesheet" href="/static/css/ipo/ipo_dashboard.css">
+    <link rel="stylesheet" href="/static/css/trading/trading.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- ApexCharts -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-left">
+                <h1>AI Trading System</h1>
+                <nav class="main-nav">
+                    <button class="nav-btn active" data-section="trading">Trading</button>
+                    <button class="nav-btn" data-section="ipo">IPO</button>
+                    <button class="nav-btn" data-section="portfolio">Portfolio</button>
+                    <button class="nav-btn" data-section="analysis">Analysis</button>
+                </nav>
+            </div>
+            <div class="header-right">
+                <div class="market-status">
+                    <span class="status-indicator"></span>
+                    <span class="status-text">Market Open</span>
+                </div>
+                <div class="user-balance">
+                    <span>Balance:</span>
+                    <span class="amount">₹1,00,000</span>
+                </div>
+                <button class="profile-btn">
+                    <i class="fas fa-user"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Trading Section -->
+        <section id="trading-section" class="dashboard-section">
+            <div class="trading-container">
+                <!-- Stock Search & Watchlist -->
+                <div class="watchlist-panel">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search stocks..." id="stock-search">
+                        <button class="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <div class="watchlist">
+                        <h3>Watchlist</h3>
+                        <div class="watchlist-items" id="watchlist-items"></div>
+                    </div>
+                </div>
+
+                <!-- Trading Panel -->
+                <div class="trading-panel">
+                    <!-- Chart Area -->
+                    <div class="chart-area">
+                        <div class="chart-header">
+                            <div class="stock-info">
+                                <h2 class="stock-name">RELIANCE</h2>
+                                <span class="stock-price">₹2,450.75</span>
+                                <span class="price-change positive">+15.50 (0.64%)</span>
+                            </div>
+                            <div class="chart-controls">
+                                <button class="time-btn active">1D</button>
+                                <button class="time-btn">1W</button>
+                                <button class="time-btn">1M</button>
+                                <button class="time-btn">1Y</button>
+                                <button class="time-btn">ALL</button>
+                            </div>
+                        </div>
+                        <div id="stock-chart"></div>
+                    </div>
+
+                    <!-- Order Panel -->
+                    <div class="order-panel">
+                        <div class="order-tabs">
+                            <button class="tab-btn active" data-tab="regular">Regular</button>
+                            <button class="tab-btn" data-tab="bracket">Bracket</button>
+                            <button class="tab-btn" data-tab="cover">Cover</button>
+                            <button class="tab-btn" data-tab="gtt">GTT</button>
+                        </div>
+
+                        <!-- Regular Order Form -->
+                        <div class="order-form" id="regular-order">
+                            <div class="buy-sell-btns">
+                                <button class="buy-btn active">Buy</button>
+                                <button class="sell-btn">Sell</button>
+                            </div>
+                            <div class="form-group">
+                                <label>Quantity</label>
+                                <input type="number" min="1" value="1">
+                            </div>
+                            <div class="form-group">
+                                <label>Price Type</label>
+                                <select>
+                                    <option value="MARKET">Market</option>
+                                    <option value="LIMIT">Limit</option>
+                                    <option value="SL">Stop Loss</option>
+                                    <option value="SL-M">SL-Market</option>
+                                </select>
+                            </div>
+                            <div class="form-group price-input hidden">
+                                <label>Price</label>
+                                <input type="number" step="0.05">
+                            </div>
+                            <div class="form-group trigger-input hidden">
+                                <label>Trigger Price</label>
+                                <input type="number" step="0.05">
+                            </div>
+                            <button class="place-order-btn">Place Order</button>
+                        </div>
+
+                        <!-- Bracket Order Form -->
+                        <div class="order-form hidden" id="bracket-order">
+                            <!-- Similar structure as regular but with stop loss and target -->
+                        </div>
+
+                        <!-- Cover Order Form -->
+                        <div class="order-form hidden" id="cover-order">
+                            <!-- Similar structure as regular but with stop loss -->
+                        </div>
+
+                        <!-- GTT Order Form -->
+                        <div class="order-form hidden" id="gtt-order">
+                            <!-- GTT specific fields -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Orders & Positions -->
+                <div class="orders-positions">
+                    <div class="section-tabs">
+                        <button class="tab-btn active" data-tab="positions">Positions</button>
+                        <button class="tab-btn" data-tab="orders">Orders</button>
+                        <button class="tab-btn" data-tab="gtt-orders">GTT</button>
+                    </div>
+                    <div class="tab-content" id="positions-content">
+                        <!-- Positions table -->
+                    </div>
+                    <div class="tab-content hidden" id="orders-content">
+                        <!-- Orders table -->
+                    </div>
+                    <div class="tab-content hidden" id="gtt-orders-content">
+                        <!-- GTT Orders table -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- IPO Section -->
+        <section id="ipo-section" class="dashboard-section hidden">
+            <div class="ipo-container">
+                <div class="section-header">
+                    <h2>IPO Dashboard</h2>
+                    <div class="header-actions">
+                        <select id="ipo-selector">
+                            <option value="">Select an IPO</option>
+                        </select>
+                        <button id="refresh-btn" class="btn">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="tab-container">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" data-tab="upcoming-tab">
+                            Upcoming IPOs
+                        </button>
+                        <button class="tab-button" data-tab="ongoing-tab">
+                            Ongoing IPOs
+                        </button>
+                        <button class="tab-button" data-tab="details-tab">
+                            IPO Details
+                        </button>
+                    </div>
+
+                    <!-- Upcoming IPOs Tab -->
+                    <div id="upcoming-tab" class="tab-content">
+                        <div id="upcoming-ipos" class="ipo-grid"></div>
+                    </div>
+
+                    <!-- Ongoing IPOs Tab -->
+                    <div id="ongoing-tab" class="tab-content hidden">
+                        <div id="ongoing-ipos" class="ipo-grid"></div>
+                    </div>
+
+                    <!-- IPO Details Tab -->
+                    <div id="details-tab" class="tab-content hidden">
+                        <!-- Charts Section -->
+                        <div class="charts-container">
+                            <!-- Subscription & GMP Section -->
+                            <div class="chart-row">
+                                <div class="chart-card">
+                                    <h3>Subscription Trends</h3>
+                                    <div id="subscription-chart"></div>
+                                </div>
+                                <div class="chart-card">
+                                    <h3>Grey Market Premium</h3>
+                                    <div id="gmp-trend-chart"></div>
+                                </div>
+                            </div>
+
+                            <!-- Performance Section -->
+                            <div class="chart-row">
+                                <div class="chart-card">
+                                    <h3>Listing Performance</h3>
+                                    <div id="listing-performance-chart"></div>
+                                </div>
+                                <div class="chart-card">
+                                    <h3>Sector Performance</h3>
+                                    <div id="sector-performance-chart"></div>
+                                </div>
+                            </div>
+
+                            <!-- Risk Analysis Section -->
+                            <div class="chart-row risk-analysis">
+                                <div class="chart-card">
+                                    <h3>Risk Assessment</h3>
+                                    <div id="risk-gauge-chart"></div>
+                                </div>
+                                <div class="chart-card">
+                                    <h3>Allotment Probability</h3>
+                                    <div id="allotment-probability-chart"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Details Section -->
+                        <div class="details-container">
+                            <div id="ipo-details"></div>
+                            <div id="ipo-analysis"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio-section" class="dashboard-section hidden">
+            <!-- Portfolio content -->
+        </section>
+
+        <!-- Analysis Section -->
+        <section id="analysis-section" class="dashboard-section hidden">
+            <!-- AI Analysis content -->
+        </section>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/static/js/theme_manager.js"></script>
+    <script src="/static/js/trading/trading.js"></script>
+    <script src="/static/js/ipo/ipo_dashboard.js"></script>
+</body>
+</html>

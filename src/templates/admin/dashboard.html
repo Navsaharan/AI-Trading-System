@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FamilyHVSDN Trading System - Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-auth.js"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-gray-800 text-white">
+            <div class="p-4">
+                <h2 class="text-2xl font-bold">FamilyHVSDN</h2>
+                <p class="text-gray-400">Admin Panel</p>
+            </div>
+            <nav class="mt-8">
+                <a href="/admin/" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">
+                    Dashboard
+                </a>
+                <a href="/admin/users" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">
+                    Users
+                </a>
+                <a href="/admin/trading-rules" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">
+                    Trading
+                </a>
+                <a href="/admin/settings" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">
+                    Settings
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-8">
+            <header class="bg-white shadow rounded-lg mb-6">
+                <div class="p-4">
+                    <h1 class="text-2xl font-bold text-gray-800">Admin Dashboard</h1>
+                </div>
+            </header>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-gray-500 text-sm font-medium">Total Users</h3>
+                    <p class="text-3xl font-bold" id="totalUsers">0</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-gray-500 text-sm font-medium">Active Trades</h3>
+                    <p class="text-3xl font-bold" id="activeTrades">0</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-gray-500 text-sm font-medium">System Health</h3>
+                    <p class="text-3xl font-bold text-green-500 system-health">Good</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-gray-500 text-sm font-medium">API Status</h3>
+                    <p class="text-3xl font-bold text-green-500 api-status">Online</p>
+                </div>
+            </div>
+
+            <!-- Settings Sections -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Trading Settings -->
+                <div class="bg-white rounded-lg shadow trading-settings">
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-4">Trading Settings</h3>
+                        <form class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Max Daily Loss (%)</label>
+                                <input type="number" name="maxDailyLoss" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" value="2">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Max Position Size (%)</label>
+                                <input type="number" name="maxPositionSize" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" value="5">
+                            </div>
+                            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                                Save Changes
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- AI Settings -->
+                <div class="bg-white rounded-lg shadow ai-settings">
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-4">AI Model Settings</h3>
+                        <form class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Model Update Frequency</label>
+                                <select name="modelUpdateFrequency" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                                    <option value="daily">Daily</option>
+                                    <option value="weekly">Weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Confidence Threshold</label>
+                                <input type="number" name="confidenceThreshold" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" value="0.75">
+                            </div>
+                            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                                Update Settings
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Custom Scripts -->
+    <script src="/static/js/admin.js"></script>
+</body>
+</html>

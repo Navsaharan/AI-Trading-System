@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Editor - Admin Panel</title>
+    <link rel="stylesheet" href="/static/admin/css/code_editor.css">
+    <!-- Monaco Editor -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.js"></script>
+</head>
+<body>
+    <div class="editor-container">
+        <!-- File Browser -->
+        <div class="file-browser">
+            <div class="file-search">
+                <input type="text" id="file-search" placeholder="Search files...">
+            </div>
+            <div class="file-tree" id="file-tree"></div>
+        </div>
+
+        <!-- Editor Area -->
+        <div class="editor-area">
+            <div class="editor-header">
+                <div class="current-file"></div>
+                <div class="editor-actions">
+                    <button id="preview-btn" class="btn">Preview Changes</button>
+                    <button id="save-btn" class="btn primary">Save Changes</button>
+                    <button id="history-btn" class="btn">Version History</button>
+                </div>
+            </div>
+            <div id="monaco-editor"></div>
+        </div>
+
+        <!-- Preview Panel -->
+        <div class="preview-panel" style="display: none;">
+            <div class="preview-header">
+                <h3>Preview Changes</h3>
+                <button class="close-preview">×</button>
+            </div>
+            <div class="diff-view"></div>
+            <div class="syntax-check"></div>
+        </div>
+
+        <!-- Version History Panel -->
+        <div class="history-panel" style="display: none;">
+            <div class="history-header">
+                <h3>Version History</h3>
+                <button class="close-history">×</button>
+            </div>
+            <div class="history-list"></div>
+        </div>
+    </div>
+
+    <!-- Commit Dialog -->
+    <div class="commit-dialog" style="display: none;">
+        <div class="dialog-content">
+            <h3>Save Changes</h3>
+            <textarea id="commit-message" placeholder="Enter commit message..."></textarea>
+            <div class="dialog-actions">
+                <button class="cancel-commit">Cancel</button>
+                <button class="confirm-commit primary">Commit Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Monaco Editor
+        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' }});
+        require(['vs/editor/editor.main'], function() {
+            // Create Editor Instance
+            const editor = monaco.editor.create(document.getElementById('monaco-editor'), {
+                value: '',
+                language: 'javascript',
+                theme: 'vs-dark',
+                automaticLayout: true,
+                minimap: { enabled: true }
+            });
+
+            // Initialize Editor Controller
+            const editorController = new EditorController(editor);
+            editorController.init();
+        });
+    </script>
+    <script src="/static/admin/js/code_editor.js"></script>
+</body>
+</html>

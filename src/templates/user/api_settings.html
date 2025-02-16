@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Settings - User</title>
+    <link rel="stylesheet" href="/static/user/styles.css">
+</head>
+<body>
+    <div class="user-container">
+        <aside class="sidebar">
+            <!-- Sidebar content -->
+        </aside>
+
+        <main class="main-content">
+            <h1>Trading API Configuration</h1>
+
+            <!-- Zerodha API Configuration -->
+            <section class="api-section card">
+                <h2>Zerodha (Kite) Configuration</h2>
+                <div class="api-form">
+                    <div class="input-group">
+                        <label>API Key</label>
+                        <input type="password" id="zerodha-api-key">
+                        <button class="show-hide-btn">Show/Hide</button>
+                    </div>
+                    <div class="input-group">
+                        <label>API Secret</label>
+                        <input type="password" id="zerodha-api-secret">
+                        <button class="show-hide-btn">Show/Hide</button>
+                    </div>
+                    <div class="input-group">
+                        <label>User ID</label>
+                        <input type="text" id="zerodha-user-id">
+                    </div>
+                    <div class="input-group">
+                        <label>TOTP Secret (Optional)</label>
+                        <input type="password" id="zerodha-totp-secret">
+                        <button class="show-hide-btn">Show/Hide</button>
+                    </div>
+                    <button class="btn btn-primary">Update Zerodha Config</button>
+                    <button class="btn btn-secondary">Test Connection</button>
+                </div>
+            </section>
+
+            <!-- Upstox API Configuration -->
+            <section class="api-section card">
+                <h2>Upstox Configuration</h2>
+                <div class="api-form">
+                    <div class="input-group">
+                        <label>API Key</label>
+                        <input type="password" id="upstox-api-key">
+                        <button class="show-hide-btn">Show/Hide</button>
+                    </div>
+                    <div class="input-group">
+                        <label>API Secret</label>
+                        <input type="password" id="upstox-api-secret">
+                        <button class="show-hide-btn">Show/Hide</button>
+                    </div>
+                    <div class="input-group">
+                        <label>Redirect URI</label>
+                        <input type="text" id="upstox-redirect-uri">
+                    </div>
+                    <button class="btn btn-primary">Update Upstox Config</button>
+                    <button class="btn btn-secondary">Test Connection</button>
+                </div>
+            </section>
+
+            <!-- Angel Broking API Configuration -->
+            <section class="api-section card">
+                <h2>Angel Broking Configuration</h2>
+                <div class="api-form">
+                    <div class="input-group">
+                        <label>API Key</label>
+                        <input type="password" id="angel-api-key">
+                        <button class="show-hide-btn">Show/Hide</button>
+                    </div>
+                    <div class="input-group">
+                        <label>Client ID</label>
+                        <input type="text" id="angel-client-id">
+                    </div>
+                    <div class="input-group">
+                        <label>Password</label>
+                        <input type="password" id="angel-password">
+                        <button class="show-hide-btn">Show/Hide</button>
+                    </div>
+                    <button class="btn btn-primary">Update Angel Config</button>
+                    <button class="btn btn-secondary">Test Connection</button>
+                </div>
+            </section>
+
+            <!-- Trading Preferences -->
+            <section class="api-section card">
+                <h2>Trading Preferences</h2>
+                <div class="api-form">
+                    <div class="input-group">
+                        <label>Default Broker</label>
+                        <select id="default-broker">
+                            <option value="zerodha">Zerodha</option>
+                            <option value="upstox">Upstox</option>
+                            <option value="angel">Angel Broking</option>
+                        </select>
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="auto-login">
+                            Enable Auto Login
+                        </label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="save-session">
+                            Save Session
+                        </label>
+                    </div>
+                    <button class="btn btn-primary">Save Preferences</button>
+                </div>
+            </section>
+
+            <!-- API Limits & Status -->
+            <section class="api-section card">
+                <h2>API Status & Limits</h2>
+                <div class="status-grid">
+                    <div class="status-item">
+                        <h3>Zerodha</h3>
+                        <p class="status-text connected">Connected</p>
+                        <p>API Calls: 150/200</p>
+                        <p>Orders Today: 15/50</p>
+                    </div>
+                    <div class="status-item">
+                        <h3>Upstox</h3>
+                        <p class="status-text disconnected">Disconnected</p>
+                        <p>API Calls: 0/200</p>
+                        <p>Orders Today: 0/50</p>
+                    </div>
+                    <div class="status-item">
+                        <h3>Angel Broking</h3>
+                        <p class="status-text connected">Connected</p>
+                        <p>API Calls: 80/200</p>
+                        <p>Orders Today: 8/50</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/user/api_settings.js"></script>
+</body>
+</html>

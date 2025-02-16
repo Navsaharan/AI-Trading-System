@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Management</title>
+    <link rel="stylesheet" href="/static/admin/styles.css">
+</head>
+<body>
+    <div class="admin-container">
+        <aside class="sidebar">
+            <!-- Sidebar content -->
+        </aside>
+
+        <main class="main-content">
+            <div class="api-management">
+                <!-- API Categories -->
+                <div class="api-categories">
+                    <button class="category-btn active" data-category="trading">Trading APIs</button>
+                    <button class="category-btn" data-category="storage">Storage APIs</button>
+                    <button class="category-btn" data-category="news">News APIs</button>
+                    <button class="category-btn" data-category="market">Market Data APIs</button>
+                    <button class="category-btn" data-category="custom">Custom APIs</button>
+                </div>
+
+                <!-- API Providers Grid -->
+                <div class="api-providers-grid">
+                    <!-- Trading APIs -->
+                    <div class="api-section" data-category="trading">
+                        <!-- Zerodha Section -->
+                        <div class="api-provider-card">
+                            <div class="provider-header">
+                                <img src="/static/images/zerodha-logo.png" alt="Zerodha">
+                                <h3>Zerodha APIs</h3>
+                            </div>
+                            <div class="api-configs">
+                                <div class="config-group">
+                                    <h4>Kite API</h4>
+                                    <div class="input-group">
+                                        <label>API Key</label>
+                                        <input type="password" class="api-input" data-provider="zerodha" data-field="kite_api_key">
+                                        <button class="show-hide-btn">Show/Hide</button>
+                                    </div>
+                                    <div class="input-group">
+                                        <label>API Secret</label>
+                                        <input type="password" class="api-input" data-provider="zerodha" data-field="kite_api_secret">
+                                        <button class="show-hide-btn">Show/Hide</button>
+                                    </div>
+                                </div>
+                                <div class="config-group">
+                                    <h4>WebSocket</h4>
+                                    <div class="input-group">
+                                        <label>Access Token</label>
+                                        <input type="password" class="api-input" data-provider="zerodha" data-field="websocket_token">
+                                        <button class="show-hide-btn">Show/Hide</button>
+                                    </div>
+                                </div>
+                                <button class="test-connection-btn" data-provider="zerodha">Test Connection</button>
+                            </div>
+                        </div>
+
+                        <!-- Add New Trading API -->
+                        <div class="add-api-card">
+                            <button class="add-api-btn" data-category="trading">
+                                <i class="fas fa-plus"></i>
+                                Add New Trading API
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Storage APIs -->
+                    <div class="api-section" data-category="storage" style="display: none;">
+                        <!-- AWS Section -->
+                        <div class="api-provider-card">
+                            <div class="provider-header">
+                                <img src="/static/images/aws-logo.png" alt="AWS">
+                                <h3>AWS Services</h3>
+                            </div>
+                            <div class="api-configs">
+                                <div class="config-group">
+                                    <h4>S3 Storage</h4>
+                                    <div class="input-group">
+                                        <label>Access Key ID</label>
+                                        <input type="password" class="api-input" data-provider="aws" data-field="s3_access_key">
+                                        <button class="show-hide-btn">Show/Hide</button>
+                                    </div>
+                                    <div class="input-group">
+                                        <label>Secret Access Key</label>
+                                        <input type="password" class="api-input" data-provider="aws" data-field="s3_secret_key">
+                                        <button class="show-hide-btn">Show/Hide</button>
+                                    </div>
+                                    <div class="input-group">
+                                        <label>Bucket Name</label>
+                                        <input type="text" class="api-input" data-provider="aws" data-field="s3_bucket">
+                                    </div>
+                                </div>
+                                <button class="test-connection-btn" data-provider="aws">Test Connection</button>
+                            </div>
+                        </div>
+
+                        <!-- Add New Storage API -->
+                        <div class="add-api-card">
+                            <button class="add-api-btn" data-category="storage">
+                                <i class="fas fa-plus"></i>
+                                Add New Storage API
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Custom Code Section -->
+                    <div class="api-section" data-category="custom" style="display: none;">
+                        <div class="custom-code-editor">
+                            <h3>Custom Integration Code</h3>
+                            <div class="code-controls">
+                                <select id="codeLanguage">
+                                    <option value="python">Python</option>
+                                    <option value="javascript">JavaScript</option>
+                                    <option value="java">Java</option>
+                                </select>
+                                <button class="save-code-btn">Save Code</button>
+                                <button class="test-code-btn">Test Code</button>
+                            </div>
+                            <div id="codeEditor"></div>
+                        </div>
+
+                        <!-- Custom Code List -->
+                        <div class="custom-code-list">
+                            <h3>Saved Custom Codes</h3>
+                            <div class="code-items">
+                                <!-- Code items will be dynamically added here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- API Documentation -->
+                <div class="api-documentation">
+                    <h3>API Documentation</h3>
+                    <div class="doc-content">
+                        <!-- Documentation content will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- API Usage Monitoring -->
+                <div class="api-monitoring">
+                    <h3>API Usage Monitoring</h3>
+                    <div class="monitoring-charts">
+                        <div class="chart" id="apiUsageChart"></div>
+                        <div class="chart" id="responseTimeChart"></div>
+                        <div class="chart" id="errorRateChart"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add API Modal -->
+    <div class="modal" id="addApiModal" style="display: none;">
+        <div class="modal-content">
+            <h3>Add New API Configuration</h3>
+            <form id="newApiForm">
+                <div class="input-group">
+                    <label>Provider Name</label>
+                    <input type="text" name="providerName" required>
+                </div>
+                <div class="input-group">
+                    <label>Category</label>
+                    <select name="category" required>
+                        <option value="trading">Trading</option>
+                        <option value="storage">Storage</option>
+                        <option value="news">News</option>
+                        <option value="market">Market Data</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Authentication Type</label>
+                    <select name="authType" required>
+                        <option value="api_key">API Key</option>
+                        <option value="oauth">OAuth</option>
+                        <option value="custom">Custom</option>
+                    </select>
+                </div>
+                <div id="authFields">
+                    <!-- Dynamic authentication fields will be added here -->
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn-primary">Add API</button>
+                    <button type="button" class="btn-secondary" onclick="closeModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/static/admin/js/api_management.js"></script>
+</body>
+</html>

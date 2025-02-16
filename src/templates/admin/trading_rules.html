@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FamilyHVSDN Trading System - Trading Rules</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-auth.js"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-gray-800 text-white">
+            <div class="p-4">
+                <h2 class="text-2xl font-bold">FamilyHVSDN</h2>
+                <p class="text-gray-400">Admin Panel</p>
+            </div>
+            <nav class="mt-8">
+                <a href="/admin/" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">
+                    Dashboard
+                </a>
+                <a href="/admin/users" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">
+                    Users
+                </a>
+                <a href="/admin/trading-rules" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">
+                    Trading
+                </a>
+                <a href="/admin/settings" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 hover:text-white">
+                    Settings
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-8">
+            <header class="bg-white shadow rounded-lg mb-6">
+                <div class="p-4 flex justify-between items-center">
+                    <h1 class="text-2xl font-bold text-gray-800">Trading Rules</h1>
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" id="addRuleBtn">
+                        Add Rule
+                    </button>
+                </div>
+            </header>
+
+            <!-- Trading Rules Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Risk Management Rules -->
+                <div class="bg-white rounded-lg shadow">
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-4">Risk Management Rules</h3>
+                        <form id="riskManagementForm" class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Max Daily Loss (%)</label>
+                                <input type="number" name="maxDailyLoss" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" value="2">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Max Position Size (%)</label>
+                                <input type="number" name="maxPositionSize" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" value="5">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Stop Loss (%)</label>
+                                <input type="number" name="stopLoss" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm" value="2">
+                            </div>
+                            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                                Update Risk Rules
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Trading Time Rules -->
+                <div class="bg-white rounded-lg shadow">
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-4">Trading Time Rules</h3>
+                        <form id="tradingTimeForm" class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Trading Start Time</label>
+                                <input type="time" name="tradingStartTime" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Trading End Time</label>
+                                <input type="time" name="tradingEndTime" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Trading Days</label>
+                                <div class="mt-2 space-y-2">
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" name="tradingDays" value="monday" class="rounded border-gray-300">
+                                        <span class="ml-2">Monday</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" name="tradingDays" value="tuesday" class="rounded border-gray-300">
+                                        <span class="ml-2">Tuesday</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" name="tradingDays" value="wednesday" class="rounded border-gray-300">
+                                        <span class="ml-2">Wednesday</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" name="tradingDays" value="thursday" class="rounded border-gray-300">
+                                        <span class="ml-2">Thursday</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" name="tradingDays" value="friday" class="rounded border-gray-300">
+                                        <span class="ml-2">Friday</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                                Update Time Rules
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Custom Trading Rules -->
+                <div class="bg-white rounded-lg shadow col-span-2">
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-4">Custom Trading Rules</h3>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Rule Name</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200" id="customRulesTableBody">
+                                    <!-- Custom rules will be dynamically inserted here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Custom Rule Modal -->
+    <div id="addRuleModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
+        <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+            <div class="mt-3">
+                <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">Add Custom Rule</h3>
+                <form id="addRuleForm" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Rule Name</label>
+                        <input type="text" name="ruleName" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Description</label>
+                        <textarea name="description" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Rule Type</label>
+                        <select name="ruleType" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                            <option value="entry">Entry Rule</option>
+                            <option value="exit">Exit Rule</option>
+                            <option value="risk">Risk Management Rule</option>
+                        </select>
+                    </div>
+                    <div class="flex justify-end space-x-3">
+                        <button type="button" class="bg-gray-200 px-4 py-2 rounded hover:bg-gray-300" onclick="closeModal()">
+                            Cancel
+                        </button>
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                            Add Rule
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Scripts -->
+    <script src="/static/js/trading_rules.js"></script>
+</body>
+</html>

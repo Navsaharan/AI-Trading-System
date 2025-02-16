@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Trading System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tradingview-widget/dist/tradingview-widget.css" rel="stylesheet">
+    <style>
+        .market-card {
+            transition: all 0.3s ease;
+            border: 1px solid #ddd;
+        }
+        .market-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .indicator-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .chart-container {
+            height: 400px;
+            width: 100%;
+        }
+        .order-form {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Indian Trading System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#market-overview">Market Overview</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#trading">Trading</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#analysis">Analysis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#backtesting">Backtesting</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Market Overview Section -->
+    <section id="market-overview" class="py-4">
+        <div class="container">
+            <h2 class="mb-4">Market Overview</h2>
+            <div class="row">
+                <!-- Nifty 50 Card -->
+                <div class="col-md-4 mb-4">
+                    <div class="card market-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Nifty 50</h5>
+                            <div class="indicator-value" id="nifty-value">19,500</div>
+                            <div class="change" id="nifty-change">+120 (0.62%)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bank Nifty Card -->
+                <div class="col-md-4 mb-4">
+                    <div class="card market-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Bank Nifty</h5>
+                            <div class="indicator-value" id="banknifty-value">44,800</div>
+                            <div class="change" id="banknifty-change">+350 (0.78%)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- India VIX Card -->
+                <div class="col-md-4 mb-4">
+                    <div class="card market-card">
+                        <div class="card-body">
+                            <h5 class="card-title">India VIX</h5>
+                            <div class="indicator-value" id="vix-value">14.25</div>
+                            <div class="change" id="vix-change">-0.8 (-5.32%)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Market Breadth -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Market Breadth</h5>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div>Advances: <span id="advances">1250</span></div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div>Declines: <span id="declines">850</span></div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div>Unchanged: <span id="unchanged">100</span></div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div>A/D Ratio: <span id="ad-ratio">1.47</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trading Section -->
+    <section id="trading" class="py-4 bg-light">
+        <div class="container">
+            <h2 class="mb-4">Trading</h2>
+            <div class="row">
+                <!-- Order Form -->
+                <div class="col-md-4">
+                    <div class="order-form">
+                        <h5>Place Order</h5>
+                        <form id="orderForm">
+                            <div class="mb-3">
+                                <label for="symbol" class="form-label">Symbol</label>
+                                <input type="text" class="form-control" id="symbol" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="orderType" class="form-label">Order Type</label>
+                                <select class="form-select" id="orderType">
+                                    <option value="MARKET">Market</option>
+                                    <option value="LIMIT">Limit</option>
+                                    <option value="SL">Stop Loss</option>
+                                    <option value="SL-M">SL-Market</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="quantity" class="form-label">Quantity</label>
+                                <input type="number" class="form-control" id="quantity" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="price" class="form-label">Price</label>
+                                <input type="number" class="form-control" id="price" step="0.05">
+                            </div>
+                            <div class="mb-3">
+                                <label for="productType" class="form-label">Product</label>
+                                <select class="form-select" id="productType">
+                                    <option value="MIS">Intraday</option>
+                                    <option value="CNC">Delivery</option>
+                                    <option value="NRML">Normal</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-success">Buy</button>
+                            <button type="button" class="btn btn-danger" onclick="sellOrder()">Sell</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Positions -->
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Open Positions</h5>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Symbol</th>
+                                            <th>Type</th>
+                                            <th>Quantity</th>
+                                            <th>Avg. Price</th>
+                                            <th>LTP</th>
+                                            <th>P&L</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="positions-body">
+                                        <!-- Positions will be populated here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analysis Section -->
+    <section id="analysis" class="py-4">
+        <div class="container">
+            <h2 class="mb-4">Technical Analysis</h2>
+            <div class="row">
+                <!-- Chart -->
+                <div class="col-12 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div id="tradingview-chart" class="chart-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Indicators -->
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Technical Indicators</h5>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td>RSI (14)</td>
+                                            <td id="rsi-value">65.42</td>
+                                        </tr>
+                                        <tr>
+                                            <td>MACD</td>
+                                            <td id="macd-value">12.5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bollinger Bands</td>
+                                            <td id="bb-value">Upper: 19750 | Lower: 19250</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Supertrend</td>
+                                            <td id="supertrend-value">Bullish (19300)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Option Chain -->
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Option Chain</h5>
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Strike</th>
+                                            <th>CE LTP</th>
+                                            <th>CE IV</th>
+                                            <th>PE LTP</th>
+                                            <th>PE IV</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="option-chain-body">
+                                        <!-- Option chain data will be populated here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-4 bg-light">
+        <div class="container">
+            <h2 class="mb-4">Portfolio</h2>
+            <div class="row">
+                <!-- Holdings -->
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Holdings</h5>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Symbol</th>
+                                            <th>Quantity</th>
+                                            <th>Avg. Cost</th>
+                                            <th>Current Value</th>
+                                            <th>P&L</th>
+                                            <th>% Return</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="holdings-body">
+                                        <!-- Holdings will be populated here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fund View -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Funds</h5>
+                            <div class="mb-3">
+                                <div>Available Balance: ₹<span id="available-balance">100000</span></div>
+                            </div>
+                            <div class="mb-3">
+                                <div>Used Margin: ₹<span id="used-margin">25000</span></div>
+                            </div>
+                            <div class="mb-3">
+                                <div>Available Margin: ₹<span id="available-margin">75000</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Backtesting Section -->
+    <section id="backtesting" class="py-4">
+        <div class="container">
+            <h2 class="mb-4">Strategy Backtesting</h2>
+            <div class="row">
+                <!-- Strategy Form -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Strategy Parameters</h5>
+                            <form id="backtestForm">
+                                <div class="mb-3">
+                                    <label for="strategy" class="form-label">Strategy</label>
+                                    <select class="form-select" id="strategy">
+                                        <option value="moving_average">Moving Average Crossover</option>
+                                        <option value="rsi">RSI Strategy</option>
+                                        <option value="supertrend">Supertrend</option>
+                                        <option value="option_selling">Option Selling</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="symbol" class="form-label">Symbol</label>
+                                    <input type="text" class="form-control" id="backtest-symbol" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="timeframe" class="form-label">Timeframe</label>
+                                    <select class="form-select" id="timeframe">
+                                        <option value="1min">1 Minute</option>
+                                        <option value="5min">5 Minutes</option>
+                                        <option value="15min">15 Minutes</option>
+                                        <option value="1hour">1 Hour</option>
+                                        <option value="1day">1 Day</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="start-date" class="form-label">Start Date</label>
+                                    <input type="date" class="form-control" id="start-date" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="end-date" class="form-label">End Date</label>
+                                    <input type="date" class="form-control" id="end-date" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Run Backtest</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backtest Results -->
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Backtest Results</h5>
+                            <div class="row mb-4">
+                                <div class="col-md-4">
+                                    <div>Total Returns: <span id="total-returns">25.8%</span></div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div>Sharpe Ratio: <span id="sharpe-ratio">1.85</span></div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div>Max Drawdown: <span id="max-drawdown">-12.5%</span></div>
+                                </div>
+                            </div>
+                            <div id="backtest-chart" class="chart-container"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tradingview-widget/dist/tradingview-widget.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/static/js/indian_trading.js"></script>
+</body>
+</html>

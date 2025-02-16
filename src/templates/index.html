@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FamilyHVSDN - Advanced Trading Platform</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo-container">
+            <h1>FamilyHVSDN</h1>
+            <p class="tagline">Advanced AI-Powered Trading Platform</p>
+        </div>
+        
+        <!-- Theme Toggle -->
+        <div class="theme-toggle">
+            <button id="theme-toggle-btn">
+                <span class="toggle-icon">🌞</span>
+                <span class="toggle-text">Light Mode</span>
+            </button>
+        </div>
+        
+        <!-- Investment Overview Stats -->
+        <div class="overview-stats">
+            <div class="stat-card">
+                <h3>Total Invested</h3>
+                <div class="stat-value">₹25,00,000</div>
+            </div>
+            
+            <div class="stat-card">
+                <h3>Total Return</h3>
+                <div class="stat-value positive">₹28,75,000</div>
+                <div class="stat-change positive">+15%</div>
+            </div>
+            
+            <div class="stat-card">
+                <h3>Profit</h3>
+                <div class="stat-value positive">₹3,75,000</div>
+                <div class="stat-change positive">+15%</div>
+            </div>
+            
+            <div class="stat-card">
+                <h3>Net Profit</h3>
+                <div class="stat-value positive">₹3,25,000</div>
+                <div class="charges-breakdown">
+                    <div class="charges-toggle">View Charges ▼</div>
+                    <div class="charges-details hidden">
+                        <div class="charge-item">
+                            <span>Brokerage:</span>
+                            <span class="charge-value">₹2,500</span>
+                        </div>
+                        <div class="charge-item">
+                            <span>STT:</span>
+                            <span class="charge-value">₹15,000</span>
+                        </div>
+                        <div class="charge-item">
+                            <span>Transaction:</span>
+                            <span class="charge-value">₹1,200</span>
+                        </div>
+                        <div class="charge-item">
+                            <span>GST:</span>
+                            <span class="charge-value">₹3,375</span>
+                        </div>
+                        <div class="charge-item">
+                            <span>SEBI:</span>
+                            <span class="charge-value">₹375</span>
+                        </div>
+                        <div class="charge-item">
+                            <span>Stamp Duty:</span>
+                            <span class="charge-value">₹2,250</span>
+                        </div>
+                        <div class="charge-item total">
+                            <span>Total Charges:</span>
+                            <span class="charge-value">₹24,700</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <nav class="main-nav">
+            <a href="#dashboard" class="nav-link active">Dashboard</a>
+            <a href="#portfolio" class="nav-link">Portfolio</a>
+            <a href="#analysis" class="nav-link">Analysis</a>
+            <a href="#reports" class="nav-link">Reports</a>
+            <div class="user-menu">
+                <span id="user-name">Welcome</span>
+                <button id="logout-btn" class="button">Logout</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Dashboard -->
+    <main class="dashboard-container">
+        <!-- Market Overview -->
+        <section class="market-overview panel">
+            <h2>Market Overview</h2>
+            <div class="market-stats">
+                <div class="stat-box">
+                    <h3>NIFTY 50</h3>
+                    <p class="price up">19,425.35</p>
+                    <p class="change up">+1.25%</p>
+                </div>
+                <div class="stat-box">
+                    <h3>SENSEX</h3>
+                    <p class="price up">64,718.56</p>
+                    <p class="change up">+1.15%</p>
+                </div>
+                <div class="stat-box">
+                    <h3>USD/INR</h3>
+                    <p class="price down">82.25</p>
+                    <p class="change down">-0.15%</p>
+                </div>
+            </div>
+            <div id="market-chart" class="chart-container"></div>
+        </section>
+
+        <!-- Trading Signals -->
+        <section class="trading-signals panel">
+            <h2>AI Trading Signals</h2>
+            <div class="signals-container">
+                <div class="signal-box buy">
+                    <h4>RELIANCE</h4>
+                    <p class="signal-type">BUY</p>
+                    <p class="signal-price">₹2,450.75</p>
+                    <p class="signal-confidence">Confidence: 92%</p>
+                </div>
+                <div class="signal-box sell">
+                    <h4>INFY</h4>
+                    <p class="signal-type">SELL</p>
+                    <p class="signal-price">₹1,575.60</p>
+                    <p class="signal-confidence">Confidence: 87%</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Overview -->
+        <section class="portfolio-overview panel">
+            <h2>Portfolio Overview</h2>
+            <div class="portfolio-stats">
+                <div class="metric-box">
+                    <h4>Total Value</h4>
+                    <p>₹15,75,000</p>
+                </div>
+                <div class="metric-box">
+                    <h4>Today's P&L</h4>
+                    <p class="up">+₹12,500</p>
+                </div>
+                <div class="metric-box">
+                    <h4>Overall Return</h4>
+                    <p class="up">+15.75%</p>
+                </div>
+            </div>
+            <div id="portfolio-chart" class="chart-container"></div>
+        </section>
+
+        <!-- Risk Analysis -->
+        <section class="risk-analysis panel">
+            <h2>Risk Analysis</h2>
+            <div class="risk-metrics">
+                <div class="metric-box">
+                    <h4>Value at Risk (VaR)</h4>
+                    <p>2.3%</p>
+                </div>
+                <div class="metric-box">
+                    <h4>Beta</h4>
+                    <p>0.85</p>
+                </div>
+                <div class="metric-box">
+                    <h4>Sharpe Ratio</h4>
+                    <p>1.8</p>
+                </div>
+            </div>
+            <div id="risk-chart" class="chart-container"></div>
+        </section>
+
+        <!-- AI Insights -->
+        <section class="ai-insights panel">
+            <h2>AI Market Insights</h2>
+            <div class="insights-container">
+                <div class="alert success">
+                    <h4>Bullish Pattern Detected</h4>
+                    <p>Multiple stocks showing strong momentum</p>
+                </div>
+                <div class="alert warning">
+                    <h4>Volatility Alert</h4>
+                    <p>Increased market volatility expected</p>
+                </div>
+            </div>
+            <div id="ai-chart" class="chart-container"></div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 FamilyHVSDN. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#terms">Terms of Service</a>
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#contact">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/static/js/dashboard.js"></script>
+    <script src="/static/js/charts.js"></script>
+    <script src="/static/js/signals.js"></script>
+</body>
+</html>

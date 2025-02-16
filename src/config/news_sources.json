@@ -1,0 +1,238 @@
+{
+    "premium_sources": {
+        "bloomberg": {
+            "name": "Bloomberg",
+            "base_url": "https://www.bloomberg.com",
+            "api_endpoint": "/markets/api/news",
+            "trust_score": 0.95,
+            "requires_subscription": true,
+            "update_frequency": "real-time",
+            "language": ["en"]
+        },
+        "reuters": {
+            "name": "Reuters",
+            "base_url": "https://www.reuters.com",
+            "api_endpoint": "/markets/api/news",
+            "trust_score": 0.95,
+            "requires_subscription": true,
+            "update_frequency": "real-time",
+            "language": ["en"]
+        },
+        "cnbc": {
+            "name": "CNBC",
+            "base_url": "https://www.cnbc.com",
+            "api_endpoint": "/api/v1/news",
+            "trust_score": 0.90,
+            "requires_subscription": false,
+            "update_frequency": "real-time",
+            "language": ["en"]
+        }
+    },
+    "indian_sources": {
+        "moneycontrol": {
+            "name": "Moneycontrol",
+            "base_url": "https://www.moneycontrol.com",
+            "api_endpoint": "/stocks/api/news",
+            "trust_score": 0.85,
+            "requires_subscription": false,
+            "update_frequency": "real-time",
+            "language": ["en", "hi"],
+            "features": ["technical_analysis", "expert_views", "market_buzz"]
+        },
+        "economic_times": {
+            "name": "Economic Times",
+            "base_url": "https://economictimes.indiatimes.com",
+            "api_endpoint": "/markets/api/news",
+            "trust_score": 0.85,
+            "requires_subscription": false,
+            "update_frequency": "real-time",
+            "language": ["en", "hi"],
+            "features": ["market_live", "expert_views", "technical_charts"]
+        },
+        "business_standard": {
+            "name": "Business Standard",
+            "base_url": "https://www.business-standard.com",
+            "api_endpoint": "/api/news",
+            "trust_score": 0.85,
+            "requires_subscription": true,
+            "update_frequency": "real-time",
+            "language": ["en", "hi"]
+        },
+        "livemint": {
+            "name": "Livemint",
+            "base_url": "https://www.livemint.com",
+            "api_endpoint": "/api/v1/news",
+            "trust_score": 0.80,
+            "requires_subscription": false,
+            "update_frequency": "real-time",
+            "language": ["en"]
+        },
+        "financial_express": {
+            "name": "Financial Express",
+            "base_url": "https://www.financialexpress.com",
+            "api_endpoint": "/api/market-news",
+            "trust_score": 0.80,
+            "requires_subscription": false,
+            "update_frequency": "real-time",
+            "language": ["en"]
+        }
+    },
+    "regulatory_sources": {
+        "sebi": {
+            "name": "SEBI",
+            "base_url": "https://www.sebi.gov.in",
+            "api_endpoint": "/api/announcements",
+            "trust_score": 1.0,
+            "requires_subscription": false,
+            "update_frequency": "daily",
+            "content_types": ["announcements", "circulars", "press_releases"]
+        },
+        "rbi": {
+            "name": "RBI",
+            "base_url": "https://www.rbi.org.in",
+            "api_endpoint": "/api/notifications",
+            "trust_score": 1.0,
+            "requires_subscription": false,
+            "update_frequency": "daily",
+            "content_types": ["monetary_policy", "notifications", "press_releases"]
+        },
+        "nse": {
+            "name": "NSE India",
+            "base_url": "https://www.nseindia.com",
+            "api_endpoint": "/api/corporate-announcements",
+            "trust_score": 0.95,
+            "requires_subscription": false,
+            "update_frequency": "real-time",
+            "content_types": ["corporate_announcements", "market_updates", "circulars"]
+        },
+        "bse": {
+            "name": "BSE India",
+            "base_url": "https://www.bseindia.com",
+            "api_endpoint": "/api/announcements",
+            "trust_score": 0.95,
+            "requires_subscription": false,
+            "update_frequency": "real-time",
+            "content_types": ["corporate_announcements", "notices", "circulars"]
+        }
+    },
+    "verified_social_sources": {
+        "twitter": {
+            "verified_accounts": [
+                {
+                    "handle": "@NSEIndia",
+                    "trust_score": 0.9,
+                    "category": "exchange"
+                },
+                {
+                    "handle": "@BSEIndia",
+                    "trust_score": 0.9,
+                    "category": "exchange"
+                },
+                {
+                    "handle": "@RBI",
+                    "trust_score": 0.95,
+                    "category": "regulatory"
+                },
+                {
+                    "handle": "@SEBI_India",
+                    "trust_score": 0.95,
+                    "category": "regulatory"
+                },
+                {
+                    "handle": "@moneycontrolcom",
+                    "trust_score": 0.8,
+                    "category": "news"
+                },
+                {
+                    "handle": "@ETMarkets",
+                    "trust_score": 0.8,
+                    "category": "news"
+                },
+                {
+                    "handle": "@livemint",
+                    "trust_score": 0.8,
+                    "category": "news"
+                }
+            ]
+        },
+        "telegram": {
+            "verified_channels": [
+                {
+                    "name": "NSE Official Updates",
+                    "trust_score": 0.9,
+                    "category": "exchange"
+                },
+                {
+                    "name": "BSE Market Updates",
+                    "trust_score": 0.9,
+                    "category": "exchange"
+                },
+                {
+                    "name": "Moneycontrol Markets",
+                    "trust_score": 0.8,
+                    "category": "news"
+                },
+                {
+                    "name": "ET Markets",
+                    "trust_score": 0.8,
+                    "category": "news"
+                }
+            ]
+        },
+        "stocktwits": {
+            "verified_users": [
+                {
+                    "handle": "NSE_Official",
+                    "trust_score": 0.9,
+                    "category": "exchange"
+                },
+                {
+                    "handle": "BSE_Official",
+                    "trust_score": 0.9,
+                    "category": "exchange"
+                },
+                {
+                    "handle": "MoneycontrolIN",
+                    "trust_score": 0.8,
+                    "category": "news"
+                }
+            ]
+        }
+    },
+    "manipulation_detection": {
+        "patterns": {
+            "pump_and_dump": {
+                "indicators": [
+                    "sudden_volume_spike",
+                    "coordinated_positive_posts",
+                    "unrealistic_price_targets",
+                    "excessive_promotion"
+                ],
+                "threshold": 0.75
+            },
+            "fake_news": {
+                "indicators": [
+                    "unverified_claims",
+                    "anonymous_sources",
+                    "exaggerated_headlines",
+                    "missing_context"
+                ],
+                "threshold": 0.70
+            },
+            "artificial_hype": {
+                "indicators": [
+                    "bot_activity",
+                    "coordinated_posting",
+                    "repetitive_messages",
+                    "suspicious_accounts"
+                ],
+                "threshold": 0.80
+            }
+        },
+        "thresholds": {
+            "minimum_verification_sources": 2,
+            "maximum_manipulation_probability": 0.3,
+            "minimum_trust_score": 0.6
+        }
+    }
+}

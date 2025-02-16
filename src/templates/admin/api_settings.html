@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Settings - Admin</title>
+    <link rel="stylesheet" href="/static/admin/styles.css">
+</head>
+<body>
+    <div class="admin-container">
+        <aside class="sidebar">
+            <!-- Sidebar content -->
+        </aside>
+
+        <main class="main-content">
+            <h1>System API Configuration</h1>
+
+            <!-- Firebase Configuration -->
+            <section class="api-section card">
+                <h2>Firebase Configuration</h2>
+                <div class="api-form">
+                    <div class="input-group">
+                        <label>Project ID</label>
+                        <input type="text" id="firebase-project-id">
+                    </div>
+                    <div class="input-group">
+                        <label>API Key</label>
+                        <input type="password" id="firebase-api-key">
+                        <button class="show-hide-btn">Show/Hide</button>
+                    </div>
+                    <div class="input-group">
+                        <label>Auth Domain</label>
+                        <input type="text" id="firebase-auth-domain">
+                    </div>
+                    <div class="input-group">
+                        <label>Storage Bucket</label>
+                        <input type="text" id="firebase-storage-bucket">
+                    </div>
+                    <button class="btn btn-primary">Update Firebase Config</button>
+                </div>
+            </section>
+
+            <!-- Database Configuration -->
+            <section class="api-section card">
+                <h2>Database Configuration</h2>
+                <div class="api-form">
+                    <div class="input-group">
+                        <label>Database URL</label>
+                        <input type="text" id="db-url">
+                    </div>
+                    <div class="input-group">
+                        <label>Username</label>
+                        <input type="text" id="db-username">
+                    </div>
+                    <div class="input-group">
+                        <label>Password</label>
+                        <input type="password" id="db-password">
+                        <button class="show-hide-btn">Show/Hide</button>
+                    </div>
+                    <button class="btn btn-primary">Update Database Config</button>
+                </div>
+            </section>
+
+            <!-- News API Configuration -->
+            <section class="api-section card">
+                <h2>News API Configuration</h2>
+                <div class="api-form">
+                    <div class="input-group">
+                        <label>Alpha Vantage API Key</label>
+                        <input type="password" id="alpha-vantage-key">
+                        <button class="show-hide-btn">Show/Hide</button>
+                    </div>
+                    <div class="input-group">
+                        <label>NewsAPI Key</label>
+                        <input type="password" id="newsapi-key">
+                        <button class="show-hide-btn">Show/Hide</button>
+                    </div>
+                    <div class="input-group">
+                        <label>Financial Modeling Prep API Key</label>
+                        <input type="password" id="fmp-key">
+                        <button class="show-hide-btn">Show/Hide</button>
+                    </div>
+                    <button class="btn btn-primary">Update News API Config</button>
+                </div>
+            </section>
+
+            <!-- Storage Configuration -->
+            <section class="api-section card">
+                <h2>Storage Configuration</h2>
+                <div class="api-form">
+                    <div class="input-group">
+                        <label>S3 Access Key</label>
+                        <input type="password" id="s3-access-key">
+                        <button class="show-hide-btn">Show/Hide</button>
+                    </div>
+                    <div class="input-group">
+                        <label>S3 Secret Key</label>
+                        <input type="password" id="s3-secret-key">
+                        <button class="show-hide-btn">Show/Hide</button>
+                    </div>
+                    <div class="input-group">
+                        <label>Bucket Name</label>
+                        <input type="text" id="s3-bucket">
+                    </div>
+                    <div class="input-group">
+                        <label>Region</label>
+                        <input type="text" id="s3-region">
+                    </div>
+                    <button class="btn btn-primary">Update Storage Config</button>
+                </div>
+            </section>
+
+            <!-- Email Configuration -->
+            <section class="api-section card">
+                <h2>Email Configuration</h2>
+                <div class="api-form">
+                    <div class="input-group">
+                        <label>SMTP Server</label>
+                        <input type="text" id="smtp-server">
+                    </div>
+                    <div class="input-group">
+                        <label>SMTP Port</label>
+                        <input type="number" id="smtp-port">
+                    </div>
+                    <div class="input-group">
+                        <label>Email Username</label>
+                        <input type="text" id="email-username">
+                    </div>
+                    <div class="input-group">
+                        <label>Email Password</label>
+                        <input type="password" id="email-password">
+                        <button class="show-hide-btn">Show/Hide</button>
+                    </div>
+                    <button class="btn btn-primary">Update Email Config</button>
+                </div>
+            </section>
+
+            <!-- Monitoring Configuration -->
+            <section class="api-section card">
+                <h2>Monitoring Configuration</h2>
+                <div class="api-form">
+                    <div class="input-group">
+                        <label>Sentry DSN</label>
+                        <input type="password" id="sentry-dsn">
+                        <button class="show-hide-btn">Show/Hide</button>
+                    </div>
+                    <div class="input-group">
+                        <label>New Relic License Key</label>
+                        <input type="password" id="newrelic-key">
+                        <button class="show-hide-btn">Show/Hide</button>
+                    </div>
+                    <button class="btn btn-primary">Update Monitoring Config</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/admin/api_settings.js"></script>
+</body>
+</html>
